@@ -4,15 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/core/status_jogo.dart';
 
+class DisputaArguments {
+  final String assetPlayer;
+  final String symbolPlayer;
+
+  DisputaArguments({required this.assetPlayer, required this.symbolPlayer});
+}
+
 class DisputaPage extends StatefulWidget {
   const DisputaPage({
     Key? key,
-    required this.assetPlayer,
-    required this.symbolPlayer,
   }) : super(key: key);
-
-  final String assetPlayer;
-  final String symbolPlayer;
 
   @override
   State<DisputaPage> createState() => _DisputaPageState();
@@ -57,6 +59,7 @@ class _DisputaPageState extends State<DisputaPage> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as DisputaArguments;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Disputa"),
@@ -75,6 +78,12 @@ class _DisputaPageState extends State<DisputaPage> {
               children: [
                 Align(
                   alignment: Alignment.centerLeft,
+                  child: Image.asset(
+                    args.assetPlayer,
+                    width: 150,
+                    height: 120,
+                  ),
+                  /*
                   child: Transform(
                     transform: Matrix4.rotationY(pi),
                     origin: const Offset(150 / 2, 0),
@@ -83,15 +92,19 @@ class _DisputaPageState extends State<DisputaPage> {
                       width: 150,
                       height: 120,
                     ),
-                  ),
+                  ),*/
                 ),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Image.asset(
-                    assetSeverino,
-                    fit: BoxFit.fitWidth,
-                    width: 150,
-                    height: 120,
+                  child: Transform(
+                    transform: Matrix4.rotationY(pi),
+                    origin: const Offset(150 / 2, 0),
+                    child: Image.asset(
+                      assetSeverino,
+                      fit: BoxFit.fitWidth,
+                      width: 150,
+                      height: 120,
+                    ),
                   ),
                 ),
               ],
@@ -99,7 +112,7 @@ class _DisputaPageState extends State<DisputaPage> {
             ElevatedButton(
                 onPressed: () {
                   final result = jogo.iniciar(
-                    widget.symbolPlayer,
+                    args.symbolPlayer,
                     symbolSeverino,
                   );
 

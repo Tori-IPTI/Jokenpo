@@ -78,12 +78,27 @@ class JokenpoOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return DisputaPage(assetPlayer: asset, symbolPlayer: symbol);
-          },
-        ));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              settings: RouteSettings(
+                arguments:
+                    DisputaArguments(assetPlayer: asset, symbolPlayer: symbol),
+              ),
+              builder: (context) {
+                return const DisputaPage();
+              },
+            ));
       },
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Image.asset(
+          asset,
+          width: 225,
+          height: 120,
+        ),
+      ),
+      /*
       child: Align(
         alignment: Alignment.centerLeft,
         child: Transform(
@@ -96,6 +111,7 @@ class JokenpoOption extends StatelessWidget {
           ),
         ),
       ),
+      */
     );
   }
 }
