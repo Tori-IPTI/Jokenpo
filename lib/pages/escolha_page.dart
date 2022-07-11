@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:jokenpo/pages/diputa_page.dart';
-
 import '../core/jogo.dart';
 
 class EscolhaPage extends StatefulWidget {

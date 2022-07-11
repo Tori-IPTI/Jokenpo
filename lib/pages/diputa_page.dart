@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/core/status_jogo.dart';
+import 'package:provider/provider.dart';
 
 class DisputaArguments {
   final String assetPlayer;
@@ -36,7 +37,7 @@ class _DisputaPageState extends State<DisputaPage> {
     StatusJogo.Derrota: "Vocẽ perdeu, mané",
   };
 
-  final jogo = Jogo();
+  late Jogo jogo;
 
   @override
   void initState() {
@@ -45,6 +46,8 @@ class _DisputaPageState extends State<DisputaPage> {
 
   @override
   void didChangeDependencies() {
+    jogo = context.watch<Jogo>();
+
     final severino = Random();
     final jogadas = ["*", "#", "%"];
     final jogada = jogadas[severino.nextInt(3)];
@@ -122,7 +125,7 @@ class _DisputaPageState extends State<DisputaPage> {
                     ),
                   );
 
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/placar');
                 },
                 child: const Text("Fight!"))
           ],

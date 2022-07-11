@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jokenpo/core/jogo.dart';
+import 'package:provider/provider.dart';
 
 class PlacarPage extends StatefulWidget {
   const PlacarPage({Key? key}) : super(key: key);
@@ -10,15 +12,27 @@ class PlacarPage extends StatefulWidget {
 class _PlacarState extends State<PlacarPage> {
   @override
   Widget build(BuildContext context) {
+    final jogo = context.watch<Jogo>();
     return Stack(
       children: <Widget>[
         Center(child: Image.asset('assets/fundo.png')),
         Center(
+          child: Consumer<Jogo>(
+            builder: (context, value, child) {
+              return Container(
+                color: const Color.fromARGB(171, 255, 255, 255),
+                width: 300.0,
+                height: 300.0,
+                child: Text('${value.partidas}'),
+              );
+            },
             child: Container(
-          color: Color.fromARGB(171, 255, 255, 255),
-          width: 300.0,
-          height: 300.0,
-        )),
+              color: const Color.fromARGB(171, 255, 255, 255),
+              width: 300.0,
+              height: 300.0,
+            ),
+          ),
+        ),
         Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -33,7 +47,7 @@ class _PlacarState extends State<PlacarPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/escolha');
+                            Navigator.pushReplacementNamed(context, '/escolha');
                           },
                           child: const Text(
                             "Jogar",
@@ -44,7 +58,7 @@ class _PlacarState extends State<PlacarPage> {
                           ),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 150, 35, 0)),
+                                const Color.fromARGB(255, 150, 35, 0)),
                           )),
                     ),
                   ],
