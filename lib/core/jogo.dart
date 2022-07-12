@@ -1,11 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'package:jokenpo/core/rules/empatar.dart';
 import 'package:jokenpo/core/rules/regra.dart';
-import 'package:jokenpo/core/rules/vencer.dart';
 
 import 'player.dart';
-
 import 'status_jogo.dart';
 
 //Aqui temos a classe do jogo com a "planta baixa" do que temos criar, os atributos. E Claro a lista de regras que vai ser usada no noss applyRules
@@ -14,7 +11,7 @@ class Jogo {
   int derrotas;
   int vitorias;
   int empates;
-  List<Regra> regras = [];
+  List<Regra> regras;
   late String jogada1;
   late String jogada2;
 /*
@@ -30,6 +27,7 @@ podemos passar parâmetros para a classe e executar determinadas validações ou
     this.derrotas = 0,
     this.vitorias = 0,
     this.empates = 0,
+    required this.regras,
   });
 // Classes sem retorno são chamadas de void, que quer dizer vazio ( lembre-se da Herrscher of void, honkai impact)
   void run(Player jogador, Player severino) {
@@ -49,11 +47,6 @@ e da máquina e chamar também as regras dele.
   StatusJogo iniciar(String jogada1, String jogada2) {
     this.jogada1 = jogada1;
     this.jogada2 = jogada2;
-
-    regras = [
-      Empatar(jogo: this),
-      Vencer(jogo: this),
-    ];
 //Aqui vamos comprar os status que recebemos de aplicar regras (lembre-se daquela lista enum que define quem ganhou ou perdeu [alou Dilma])
     final status = _applyRules();
     switch (status) {
@@ -109,9 +102,9 @@ lembre-se de colocar o toSring para representar em string o objeto.
 
   */
   StatusJogo _applyRules() {
-    for (var regra in this.regras) {
-      final resultado = regra.aplicar();
-      if (resultado != null) {
+    for (var regra in regras) {
+      final resultado = regra.aplicar(this);
+      if (resultado != StatusJogo.none) {
         return resultado;
       }
     }

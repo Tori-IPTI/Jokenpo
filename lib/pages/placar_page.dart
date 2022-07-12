@@ -15,22 +15,56 @@ class _PlacarState extends State<PlacarPage> {
     final jogo = context.watch<Jogo>();
     return Stack(
       children: <Widget>[
-        Center(child: Image.asset('assets/fundo.png')),
         Center(
           child: Consumer<Jogo>(
-            builder: (context, value, child) {
-              return Container(
-                color: const Color.fromARGB(171, 255, 255, 255),
-                width: 300.0,
-                height: 300.0,
-                child: Text('${value.partidas}'),
+            builder: (context, value, children) {
+              return Scaffold(
+                appBar: AppBar(
+                  title: Text("Placar"),
+                ),
+                body: Center(
+                  child: Stack(
+                    children: [
+                      Container(
+                        color: const Color.fromARGB(171, 255, 255, 255),
+                        width: 300.0,
+                        height: 300.0,
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                  'As nossas partidas jogadas: ${value.partidas}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: const Color.fromARGB(
+                                          255, 47, 2, 73))),
+                              Text(
+                                'Suas vitórias: ${value.vitorias}',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color:
+                                        const Color.fromARGB(255, 47, 2, 73)),
+                              ),
+                              Text('Suas derrotas: ${value.derrotas}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: const Color.fromARGB(
+                                          255, 47, 2, 73))),
+                              Text('Seus empates: ${value.empates}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: const Color.fromARGB(
+                                          255, 47, 2, 73))),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
               );
             },
-            child: Container(
-              color: const Color.fromARGB(171, 255, 255, 255),
-              width: 300.0,
-              height: 300.0,
-            ),
           ),
         ),
         Center(

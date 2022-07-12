@@ -6,9 +6,7 @@ import '../status_jogo.dart';
 class Vencer extends Regra {
   final _jogadas = ["*", "#", "%"];
 
-  final Jogo jogo;
-
-  Vencer({required this.jogo});
+  Vencer();
   /*
   Aqui temos a lógica de vencer ou perder 
   indexOf pesquisa a lista do início do índice até o final da lista. 
@@ -18,7 +16,7 @@ class Vencer extends Regra {
   ou o indice da jogada do player é maior que o do severino. (Ex:papel é 1 e pedra 0, jogador o severino escolheram esses respectivamente) 
   */
   @override
-  StatusJogo? aplicar() {
+  StatusJogo aplicar(Jogo jogo) {
     final indexPlayer = _jogadas.indexOf(jogo.jogada1);
     final indexSeverino = _jogadas.indexOf(jogo.jogada2);
 

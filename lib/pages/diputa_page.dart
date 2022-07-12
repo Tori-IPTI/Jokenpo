@@ -62,31 +62,33 @@ class _DisputaPageState extends State<DisputaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as DisputaArguments;
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Disputa"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              "Fight",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Image.asset(
-                    args.assetPlayer,
-                    width: 150,
-                    height: 120,
-                  ),
-                  /*
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    if (args is DisputaArguments) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text("Disputa"),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                "Fight",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset(
+                      args.assetPlayer,
+                      width: 150,
+                      height: 120,
+                    ),
+                    /*
                   child: Transform(
                     transform: Matrix4.rotationY(pi),
                     origin: const Offset(150 / 2, 0),
@@ -96,41 +98,46 @@ class _DisputaPageState extends State<DisputaPage> {
                       height: 120,
                     ),
                   ),*/
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Transform(
-                    transform: Matrix4.rotationY(pi),
-                    origin: const Offset(150 / 2, 0),
-                    child: Image.asset(
-                      assetSeverino,
-                      fit: BoxFit.fitWidth,
-                      width: 150,
-                      height: 120,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Transform(
+                      transform: Matrix4.rotationY(pi),
+                      origin: const Offset(150 / 2, 0),
+                      child: Image.asset(
+                        assetSeverino,
+                        fit: BoxFit.fitWidth,
+                        width: 150,
+                        height: 120,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  final result = jogo.iniciar(
-                    args.symbolPlayer,
-                    symbolSeverino,
-                  );
+                ],
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    final result = jogo.iniciar(
+                      args.symbolPlayer,
+                      symbolSeverino,
+                    );
 
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(messages[result]!),
-                    ),
-                  );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(messages[result]!),
+                      ),
+                    );
 
-                  Navigator.pushNamed(context, '/placar');
-                },
-                child: const Text("Fight!"))
-          ],
+                    Navigator.pushNamed(context, '/escolha');
+                  },
+                  child: const Text("Fight!"))
+            ],
+          ),
         ),
-      ),
+      );
+    }
+
+    return const Center(
+      child: CircularProgressIndicator(),
     );
   }
 }

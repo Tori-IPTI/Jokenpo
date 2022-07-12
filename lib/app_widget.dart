@@ -8,13 +8,16 @@ import 'package:jokenpo/pages/placar_page.dart';
 import 'package:jokenpo/pages/regras_page.dart';
 import 'package:provider/provider.dart';
 
+import 'core/rules/empatar.dart';
+import 'core/rules/vencer.dart';
+
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (_) => Jogo(),
+      create: (_) => Jogo(regras: [Vencer(), Empatar()]),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

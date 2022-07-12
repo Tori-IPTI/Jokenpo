@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import 'package:jokenpo/core/rules/empatar.dart';
+import 'package:jokenpo/core/rules/vencer.dart';
+
 import 'interacao_usuario.dart';
 import 'jogador.dart';
 import 'jogo.dart';
@@ -8,7 +11,7 @@ void main(List<String> args) {
   final jogador = createPlayer();
   final sevirino = createIA();
 
-  final jogo = Jogo();
+  final jogo = Jogo(regras: [Vencer(), Empatar()]);
   //desse jeito aqui estamos chamando o comportamento, ou seja a função.
   jogo.run(jogador, sevirino);
 }

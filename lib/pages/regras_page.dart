@@ -32,13 +32,18 @@ class _RegrasPageState extends State<RegrasPage> {
                   children: const <Widget>[
                     Text(
                       "Regras",
+                      key: Key("TITLE_PAGE"),
                       style: TextStyle(
                         fontSize: 20,
-                        color: Color.fromARGB(255, 90, 5, 139),
+                        color: Color.fromARGB(255, 99, 4, 28),
                       ),
                     ),
                     Text(
                       "A tesoura corta o papel, mas quebra com a pedra; o papel embrulha a pedra, mas é cortado pela tesoura e a pedra quebra a tesoura e é embrulhada pelo papel.",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color.fromARGB(255, 56, 3, 43),
+                      ),
                     ),
                   ],
                 )),

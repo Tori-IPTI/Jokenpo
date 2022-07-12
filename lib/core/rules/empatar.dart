@@ -3,17 +3,12 @@ import 'regra.dart';
 import '../status_jogo.dart';
 
 class Empatar extends Regra {
-  final Jogo jogo;
-  Empatar({
-    required this.jogo,
-  });
-
   @override
-  StatusJogo? aplicar() {
+  StatusJogo aplicar(Jogo jogo) {
     if (jogo.jogada1 == jogo.jogada2) {
       return StatusJogo.Empate;
     }
 
-    return null;
+    return StatusJogo.none;
   }
 }
