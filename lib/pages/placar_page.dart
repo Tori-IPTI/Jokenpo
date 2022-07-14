@@ -17,10 +17,13 @@ class _PlacarState extends State<PlacarPage> {
       children: <Widget>[
         Center(
           child: Consumer<Jogo>(
-            builder: (context, value, children) {
+            builder: (context, jogo, children) {
               return Scaffold(
                 appBar: AppBar(
-                  title: Text("Placar"),
+                  title: Text(
+                    "Placar",
+                    key: const Key("TITLE_PAGE"),
+                  ),
                 ),
                 body: Center(
                   child: Stack(
@@ -36,24 +39,24 @@ class _PlacarState extends State<PlacarPage> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                  'As nossas partidas jogadas: ${value.partidas}',
+                                  'As nossas partidas jogadas: ${jogo.partidas}',
                                   style: TextStyle(
                                       fontSize: 20,
                                       color: const Color.fromARGB(
                                           255, 47, 2, 73))),
                               Text(
-                                'Suas vitórias: ${value.vitorias}',
+                                'Suas vitórias: ${jogo.vitorias}',
                                 style: TextStyle(
                                     fontSize: 20,
                                     color:
                                         const Color.fromARGB(255, 47, 2, 73)),
                               ),
-                              Text('Suas derrotas: ${value.derrotas}',
+                              Text('Suas derrotas: ${jogo.derrotas}',
                                   style: TextStyle(
                                       fontSize: 20,
                                       color: const Color.fromARGB(
                                           255, 47, 2, 73))),
-                              Text('Seus empates: ${value.empates}',
+                              Text('Seus empates: ${jogo.empates}',
                                   style: TextStyle(
                                       fontSize: 20,
                                       color: const Color.fromARGB(
@@ -81,7 +84,7 @@ class _PlacarState extends State<PlacarPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/escolha');
+                            Navigator.of(context).pushNamed('/escolha');
                           },
                           child: const Text(
                             "Jogar",
@@ -103,7 +106,7 @@ class _PlacarState extends State<PlacarPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/regras');
+                            Navigator.of(context).pushNamed('/regras');
                           },
                           child: const Text("Regras",
                               style: TextStyle(
@@ -123,7 +126,7 @@ class _PlacarState extends State<PlacarPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/placar');
+                          Navigator.of(context).pushNamed('/placar');
                         },
                         child: const Text("Placar",
                             style: TextStyle(

@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jokenpo/pages/regras_page.dart';
+import 'package:mockingjay/mockingjay.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('When RegrasPage builds then show elements',
+      (WidgetTester tester) async {
     // Arrange
     const page = MaterialApp(
       home: RegrasPage(),
@@ -13,7 +17,6 @@ void main() {
     await tester.pumpWidget(page);
 
     // Assert
-    final resultSearch = find.text('');
 
     expect(find.byKey(const Key('TITLE_PAGE')), findsOneWidget);
     expect(
@@ -23,5 +26,73 @@ void main() {
       findsOneWidget,
     );
     expect(find.byType(ElevatedButton), findsNWidgets(3));
+  });
+
+  group("When ", () {
+    final navigatorMock = MockNavigator();
+    when(() => navigatorMock.pushNamed(any())).thenAnswer((_) async {});
+    final page = MaterialApp(
+      home: MockNavigatorProvider(
+        navigator: navigatorMock,
+        child: const RegrasPage(),
+      ),
+    );
+    testWidgets('Placar Button was taped then navigate to PlacarPage',
+        (WidgetTester tester) async {
+      // Arrange
+
+      // Act
+      await tester.pumpWidget(page);
+
+      // Assert
+      final resultSearch = find.widgetWithText(ElevatedButton, "Placar");
+
+      expect(resultSearch, findsOneWidget);
+
+      await tester.tap(resultSearch);
+
+      verify(
+        () => navigatorMock.pushNamed('/placar'),
+      ).called(1);
+    });
+
+    testWidgets("Regras Button was taped then navigate to RegrasPage",
+        (WidgetTester tester) async {
+      //arrange
+
+      // Act
+      await tester.pumpWidget(page);
+
+      //Assert
+      final resultSearch = find.widgetWithText(ElevatedButton, "Regras");
+
+      expect(resultSearch, findsOneWidget);
+
+      await tester.tap(resultSearch);
+
+      verify(
+        () => navigatorMock.pushNamed('/regras'),
+      ).called(1);
+    });
+
+    testWidgets("Escolha Button was taped then navigate to EscolhaPage",
+        (WidgetTester tester) async {
+      //Arrange
+
+      //Act
+      await tester.pumpWidget(page);
+
+      //Assert
+      final resultSearch = find.widgetWithText(ElevatedButton, "Jogar");
+
+      expect(resultSearch, findsOneWidget);
+
+      await tester.tap(resultSearch);
+
+      verify(
+        () => navigatorMock.pushNamed('/escolha'),
+      ).called(1);
+    });
+    
   });
 }

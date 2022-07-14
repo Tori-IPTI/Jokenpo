@@ -5,6 +5,7 @@ import 'player.dart';
 class Severino extends Player {
   Severino() : super(nome: "Severino");
 
+  @override
   String jogar() {
     final severino = Random();
     final jogadas = ["*", "#", "%"];

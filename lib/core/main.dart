@@ -13,7 +13,12 @@ void main(List<String> args) {
 
   final jogo = Jogo(regras: [Vencer(), Empatar()]);
   //desse jeito aqui estamos chamando o comportamento, ou seja a função.
-  jogo.run(jogador, sevirino);
+
+  while (true) {
+    final movJogador = jogador.jogar();
+    final movSeverino = sevirino.jogar();
+    jogo.iniciar(movJogador, movSeverino);
+  }
 }
 
 Jogador createPlayer() {

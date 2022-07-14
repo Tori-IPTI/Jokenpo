@@ -29,14 +29,6 @@ podemos passar parâmetros para a classe e executar determinadas validações ou
     this.empates = 0,
     required this.regras,
   });
-// Classes sem retorno são chamadas de void, que quer dizer vazio ( lembre-se da Herrscher of void, honkai impact)
-  void run(Player jogador, Player severino) {
-    while (true) {
-      final movJogador = jogador.jogar();
-      final movSeverino = severino.jogar();
-      iniciar(movJogador, movSeverino);
-    }
-  }
 
 /*
 Aqui onde nós iniciamos o jogo. Primeiro, como estamos chamando o módulo principal,

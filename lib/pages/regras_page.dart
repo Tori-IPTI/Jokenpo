@@ -62,7 +62,7 @@ class _RegrasPageState extends State<RegrasPage> {
                         fit: FlexFit.tight,
                         child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, '/escolha');
+                              Navigator.of(context).pushNamed('/escolha');
                             },
                             child: const Text(
                               "Jogar",
@@ -84,7 +84,7 @@ class _RegrasPageState extends State<RegrasPage> {
                         fit: FlexFit.tight,
                         child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, '/regras');
+                              Navigator.of(context).pushNamed('/regras');
                             },
                             child: const Text("Regras",
                                 style: TextStyle(
@@ -104,7 +104,7 @@ class _RegrasPageState extends State<RegrasPage> {
                         fit: FlexFit.tight,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/placar');
+                            Navigator.of(context).pushNamed('/placar');
                             // TODO: Colocar  Navigator.pushReplacementNamed(context, '/escolha'); aqui
                           },
                           child: const Text("Placar",

@@ -22,7 +22,9 @@ class Vencer extends Regra {
 
     if ((indexPlayer + 1) % 3 == indexSeverino) {
       return StatusJogo.Derrota;
+    } else if (indexPlayer != indexSeverino) {
+      return StatusJogo.Vitoria;
     }
-    return StatusJogo.Vitoria;
+    return StatusJogo.none;
   }
 }
