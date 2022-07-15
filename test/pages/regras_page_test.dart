@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jokenpo/pages/regras_page.dart';
@@ -30,7 +28,9 @@ void main() {
 
   group("When ", () {
     final navigatorMock = MockNavigator();
-    when(() => navigatorMock.pushNamed(any())).thenAnswer((_) async {});
+    when(() => navigatorMock.pushReplacementNamed(any())).thenAnswer((_) async {
+      return null;
+    });
     final page = MaterialApp(
       home: MockNavigatorProvider(
         navigator: navigatorMock,
@@ -52,7 +52,7 @@ void main() {
       await tester.tap(resultSearch);
 
       verify(
-        () => navigatorMock.pushNamed('/placar'),
+        () => navigatorMock.pushReplacementNamed('/placar'),
       ).called(1);
     });
 
@@ -71,7 +71,7 @@ void main() {
       await tester.tap(resultSearch);
 
       verify(
-        () => navigatorMock.pushNamed('/regras'),
+        () => navigatorMock.pushReplacementNamed('/regras'),
       ).called(1);
     });
 
@@ -90,9 +90,8 @@ void main() {
       await tester.tap(resultSearch);
 
       verify(
-        () => navigatorMock.pushNamed('/escolha'),
+        () => navigatorMock.pushReplacementNamed('/escolha'),
       ).called(1);
     });
-    
   });
 }

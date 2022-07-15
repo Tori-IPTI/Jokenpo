@@ -18,7 +18,7 @@ void main() {
       // Act - Ação
       final result = vencer.aplicar(mockJogo);
       //Assert - Afirmar
-      expect(result, equals(StatusJogo.Vitoria));
+      expect(result, equals(StatusJogo.vitoria));
     });
     test("When rule Vencer was apply then return Status perder", () {
       //Arrange - Arranjo
@@ -26,7 +26,7 @@ void main() {
       // Act - Ação
       final result = vencer.aplicar(mockJogo);
       //Assert - Afirmar
-      expect(result, equals(StatusJogo.Derrota));
+      expect(result, equals(StatusJogo.derrota));
     });
     test("When rule Vencer was apply then return Status perder", () {
       //Arrange - Arranjo
@@ -38,4 +38,3 @@ void main() {
     });
   });
 }
-

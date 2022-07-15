@@ -13,6 +13,7 @@ Uma dica aqui é, readLineSync só aceita strings, só que a forma como estamso 
 Para que tudo esteja certo, vamos dizer para ele que vamos garantir que não vai ter valores nulos colocando um! no final "stdin.readLineSync()!"
 E finalizar retornando o movPlayer. Nota para o stdin.readLineSync() funcionar precisamos da biblioteca import "'dart:io';", só colocar lá em cima ou apertar a lampada quando colocar o Sync
 */
+  @override
   String jogar() {
     return jogada();
   }

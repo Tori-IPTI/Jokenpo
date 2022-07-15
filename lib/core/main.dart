@@ -35,6 +35,7 @@ Jogador createIA() {
       final severino = Random();
       final jogadas = ["*", "#", "%"];
       final jogada = jogadas[severino.nextInt(3)];
+      // ignore: avoid_print
       print("Severino invoca $jogada no campo de batalha");
       return jogada;
     },

@@ -1,10 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/core/rules/empatar.dart';
 import 'package:jokenpo/core/rules/vencer.dart';
-import 'package:jokenpo/core/rules/regra.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:jokenpo/core/status_jogo.dart';
-import 'package:jokenpo/core/jogo.dart';
+import 'package:mocktail/mocktail.dart';
 
 class MockEmpatar extends Mock implements Empatar {}
 
@@ -20,9 +19,8 @@ void main() {
       final mockEmpatar = MockEmpatar();
 
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
-      
 
-      when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.Empate);
+      when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.empate);
       when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.none);
 
       const jogada2 = '*';
@@ -34,7 +32,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Empate));
+      expect(jogada, equals(StatusJogo.empate));
     });
   });
 }

@@ -6,7 +6,7 @@ class Empatar extends Regra {
   @override
   StatusJogo aplicar(Jogo jogo) {
     if (jogo.jogada1 == jogo.jogada2) {
-      return StatusJogo.Empate;
+      return StatusJogo.empate;
     }
 
     return StatusJogo.none;

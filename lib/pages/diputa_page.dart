@@ -32,9 +32,9 @@ class _DisputaPageState extends State<DisputaPage> {
   };
 
   final messages = <StatusJogo, String>{
-    StatusJogo.Vitoria: "Você venceu!",
-    StatusJogo.Empate: "Ops! empatou",
-    StatusJogo.Derrota: "Vocẽ perdeu, mané",
+    StatusJogo.vitoria: "Você venceu!",
+    StatusJogo.empate: "Ops! empatou",
+    StatusJogo.derrota: "Vocẽ perdeu, mané",
   };
 
   late Jogo jogo;
@@ -127,7 +127,8 @@ class _DisputaPageState extends State<DisputaPage> {
                       ),
                     );
 
-                    Navigator.pushNamed(context, '/escolha');
+                    //Navigator.pushNamed(context, '/escolha');
+                    Navigator.pushReplacementNamed(context, '/escolha');
                   },
                   child: const Text("Fight!"))
             ],

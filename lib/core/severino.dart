@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
+
 import 'player.dart';
 
 class Severino extends Player {
@@ -10,7 +12,7 @@ class Severino extends Player {
     final severino = Random();
     final jogadas = ["*", "#", "%"];
     final jogada = jogadas[severino.nextInt(3)];
-    print("Severino invoca $jogada no campo de batalha");
+    debugPrint("Severino invoca $jogada no campo de batalha");
     return jogada;
   }
 }

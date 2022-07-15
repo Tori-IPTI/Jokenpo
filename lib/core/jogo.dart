@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:flutter/cupertino.dart';
 import 'package:jokenpo/core/rules/regra.dart';
 
-import 'player.dart';
 import 'status_jogo.dart';
 
 //Aqui temos a classe do jogo com a "planta baixa" do que temos criar, os atributos. E Claro a lista de regras que vai ser usada no noss applyRules
@@ -42,17 +42,17 @@ e da máquina e chamar também as regras dele.
 //Aqui vamos comprar os status que recebemos de aplicar regras (lembre-se daquela lista enum que define quem ganhou ou perdeu [alou Dilma])
     final status = _applyRules();
     switch (status) {
-      //caso StatusJogo.Empate ele conta mais 1 no contador. Isso se repete para os outros.
-      case StatusJogo.Empate:
+      //caso StatusJogo.empate ele conta mais 1 no contador. Isso se repete para os outros.
+      case StatusJogo.empate:
         empates++;
-        print("Empatou");
+        debugPrint("Empatou");
         break;
-      case StatusJogo.Vitoria:
+      case StatusJogo.vitoria:
         vitorias++;
         //aqui nós também definimos qual jogador venceu
         // print("${this.jogador.nome} venceu");
         break;
-      case StatusJogo.Derrota:
+      case StatusJogo.derrota:
         derrotas++;
         // print("${this.severino.nome} venceu");
         break;
@@ -60,7 +60,7 @@ e da máquina e chamar também as regras dele.
     }
     partidas++;
 //
-    print(this);
+    debugPrint(toString());
 
     return status;
   }
@@ -100,6 +100,6 @@ lembre-se de colocar o toSring para representar em string o objeto.
         return resultado;
       }
     }
-    return StatusJogo.Derrota;
+    return StatusJogo.derrota;
   }
 }

@@ -21,9 +21,9 @@ class Vencer extends Regra {
     final indexSeverino = _jogadas.indexOf(jogo.jogada2);
 
     if ((indexPlayer + 1) % 3 == indexSeverino) {
-      return StatusJogo.Derrota;
+      return StatusJogo.derrota;
     } else if (indexPlayer != indexSeverino) {
-      return StatusJogo.Vitoria;
+      return StatusJogo.vitoria;
     }
     return StatusJogo.none;
   }

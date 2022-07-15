@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/pages/diputa_page.dart';
 import 'package:jokenpo/pages/escolha_page.dart';
-//import 'package:jokenpo/pages/resultado_page.dart';
 import 'package:jokenpo/pages/menu_page.dart';
 import 'package:jokenpo/pages/placar_page.dart';
 import 'package:jokenpo/pages/regras_page.dart';

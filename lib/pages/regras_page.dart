@@ -10,10 +10,6 @@ class RegrasPage extends StatefulWidget {
 class _RegrasPageState extends State<RegrasPage> {
   @override
   Widget build(BuildContext context) {
-    const textStyle = TextStyle(
-      fontSize: 20,
-      color: Color.fromARGB(255, 90, 5, 139),
-    );
     return Scaffold(
       //para aparecer as possibilidades aperte ctrl espaço.
 
@@ -62,7 +58,9 @@ class _RegrasPageState extends State<RegrasPage> {
                         fit: FlexFit.tight,
                         child: ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pushNamed('/escolha');
+                              //Navigator.of(context).pushNamed('/escolha');
+                              Navigator.pushReplacementNamed(
+                                  context, '/escolha');
                             },
                             child: const Text(
                               "Jogar",
@@ -84,7 +82,9 @@ class _RegrasPageState extends State<RegrasPage> {
                         fit: FlexFit.tight,
                         child: ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pushNamed('/regras');
+                              //Navigator.of(context).pushNamed('/regras');
+                              Navigator.pushReplacementNamed(
+                                  context, '/regras');
                             },
                             child: const Text("Regras",
                                 style: TextStyle(
@@ -93,7 +93,7 @@ class _RegrasPageState extends State<RegrasPage> {
                                 )),
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  Color.fromARGB(255, 94, 5, 64)),
+                                  const Color.fromARGB(255, 94, 5, 64)),
                             )),
                       ),
                     ],
@@ -104,8 +104,7 @@ class _RegrasPageState extends State<RegrasPage> {
                         fit: FlexFit.tight,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/placar');
-                            // TODO: Colocar  Navigator.pushReplacementNamed(context, '/escolha'); aqui
+                            Navigator.pushReplacementNamed(context, '/placar');
                           },
                           child: const Text("Placar",
                               style: TextStyle(
@@ -114,7 +113,7 @@ class _RegrasPageState extends State<RegrasPage> {
                               )),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 10, 35, 145)),
+                                const Color.fromARGB(255, 10, 35, 145)),
                           ),
                         ),
                       ),

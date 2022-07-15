@@ -18,7 +18,7 @@ void main() {
       //Act
       final result = empatar.aplicar(mockJogo);
       //Assert
-      expect(result, equals(StatusJogo.Empate));
+      expect(result, equals(StatusJogo.empate));
     });
     test("When rule Empatar was apply then return Status none", () {
       // Arrange

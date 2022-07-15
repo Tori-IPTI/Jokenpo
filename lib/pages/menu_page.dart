@@ -28,7 +28,8 @@ class _MenuPageState extends State<MenuPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/escolha');
+                            //Navigator.pushNamed(context, '/escolha');
+                            Navigator.pushReplacementNamed(context, '/escolha');
                           },
                           child: const Text(
                             "Jogar",
@@ -39,7 +40,7 @@ class _MenuPageState extends State<MenuPage> {
                           ),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 150, 35, 0)),
+                                const Color.fromARGB(255, 150, 35, 0)),
                           )),
                     ),
                   ],
@@ -50,7 +51,8 @@ class _MenuPageState extends State<MenuPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/regras');
+                            //Navigator.pushNamed(context, '/regras');
+                            Navigator.pushReplacementNamed(context, '/regras');
                           },
                           child: const Text("Regras",
                               style: TextStyle(
@@ -59,7 +61,7 @@ class _MenuPageState extends State<MenuPage> {
                               )),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 94, 5, 64)),
+                                const Color.fromARGB(255, 94, 5, 64)),
                           )),
                     ),
                   ],
@@ -70,7 +72,8 @@ class _MenuPageState extends State<MenuPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/placar');
+                          //Navigator.pushNamed(context, '/placar');
+                          Navigator.pushReplacementNamed(context, '/placar');
                         },
                         child: const Text("Placar",
                             style: TextStyle(
@@ -79,7 +82,7 @@ class _MenuPageState extends State<MenuPage> {
                             )),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromARGB(255, 10, 35, 145)),
+                              const Color.fromARGB(255, 10, 35, 145)),
                         ),
                       ),
                     ),

@@ -1,1 +1,1 @@
-enum StatusJogo { Vitoria, Derrota, Empate, none }
+enum StatusJogo { vitoria, derrota, empate, none }

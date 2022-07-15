@@ -12,7 +12,6 @@ class PlacarPage extends StatefulWidget {
 class _PlacarState extends State<PlacarPage> {
   @override
   Widget build(BuildContext context) {
-    final jogo = context.watch<Jogo>();
     return Stack(
       children: <Widget>[
         Center(
@@ -20,9 +19,9 @@ class _PlacarState extends State<PlacarPage> {
             builder: (context, jogo, children) {
               return Scaffold(
                 appBar: AppBar(
-                  title: Text(
+                  title: const Text(
                     "Placar",
-                    key: const Key("TITLE_PAGE"),
+                    key: Key("TITLE_PAGE"),
                   ),
                 ),
                 body: Center(
@@ -40,27 +39,23 @@ class _PlacarState extends State<PlacarPage> {
                             children: [
                               Text(
                                   'As nossas partidas jogadas: ${jogo.partidas}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 20,
-                                      color: const Color.fromARGB(
-                                          255, 47, 2, 73))),
+                                      color: Color.fromARGB(255, 47, 2, 73))),
                               Text(
                                 'Suas vitórias: ${jogo.vitorias}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 20,
-                                    color:
-                                        const Color.fromARGB(255, 47, 2, 73)),
+                                    color: Color.fromARGB(255, 47, 2, 73)),
                               ),
                               Text('Suas derrotas: ${jogo.derrotas}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 20,
-                                      color: const Color.fromARGB(
-                                          255, 47, 2, 73))),
+                                      color: Color.fromARGB(255, 47, 2, 73))),
                               Text('Seus empates: ${jogo.empates}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 20,
-                                      color: const Color.fromARGB(
-                                          255, 47, 2, 73))),
+                                      color: Color.fromARGB(255, 47, 2, 73))),
                             ],
                           ))
                     ],
@@ -84,7 +79,8 @@ class _PlacarState extends State<PlacarPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/escolha');
+                            //Navigator.of(context).pushNamed('/escolha');
+                            Navigator.pushReplacementNamed(context, '/escolha');
                           },
                           child: const Text(
                             "Jogar",
@@ -106,7 +102,8 @@ class _PlacarState extends State<PlacarPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/regras');
+                            //Navigator.of(context).pushNamed('/regras');
+                            Navigator.pushReplacementNamed(context, '/regras');
                           },
                           child: const Text("Regras",
                               style: TextStyle(
@@ -115,7 +112,7 @@ class _PlacarState extends State<PlacarPage> {
                               )),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 94, 5, 64)),
+                                const Color.fromARGB(255, 94, 5, 64)),
                           )),
                     ),
                   ],
@@ -126,7 +123,8 @@ class _PlacarState extends State<PlacarPage> {
                       fit: FlexFit.tight,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/placar');
+                          //Navigator.of(context).pushNamed('/placar');
+                          Navigator.pushReplacementNamed(context, '/placar');
                         },
                         child: const Text("Placar",
                             style: TextStyle(
@@ -135,7 +133,7 @@ class _PlacarState extends State<PlacarPage> {
                             )),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromARGB(255, 10, 35, 145)),
+                              const Color.fromARGB(255, 10, 35, 145)),
                         ),
                       ),
                     ),

@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/core/rules/empatar.dart';
 import 'package:jokenpo/core/rules/vencer.dart';
-import 'package:jokenpo/core/severino.dart';
 import 'package:jokenpo/core/status_jogo.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -21,7 +20,7 @@ void main() {
 
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
-      when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.Empate);
+      when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.empate);
       when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.none);
 
       const jogada2 = '*';
@@ -33,7 +32,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Empate));
+      expect(jogada, equals(StatusJogo.empate));
     });
     test(' and % return a Vitória', () async {
       // Arrange
@@ -43,7 +42,7 @@ void main() {
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
       when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.none);
-      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.Vitoria);
+      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.vitoria);
 
       const jogada2 = '%';
 
@@ -54,7 +53,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Vitoria));
+      expect(jogada, equals(StatusJogo.vitoria));
     });
     test(' and # return a Derrota', () async {
       // Arrange
@@ -64,7 +63,7 @@ void main() {
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
       when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.none);
-      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.Derrota);
+      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.derrota);
 
       const jogada2 = '#';
 
@@ -75,7 +74,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Derrota));
+      expect(jogada, equals(StatusJogo.derrota));
     });
   });
 
@@ -89,7 +88,7 @@ void main() {
 
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
-      when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.Empate);
+      when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.empate);
       when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.none);
 
       const jogada2 = '#';
@@ -101,7 +100,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Empate));
+      expect(jogada, equals(StatusJogo.empate));
     });
     test(' and * return a Vitória', () async {
       // Arrange
@@ -111,7 +110,7 @@ void main() {
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
       when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.none);
-      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.Vitoria);
+      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.vitoria);
 
       const jogada2 = '*';
 
@@ -122,7 +121,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Vitoria));
+      expect(jogada, equals(StatusJogo.vitoria));
     });
     test(' and % return a Derrota', () async {
       // Arrange
@@ -132,7 +131,7 @@ void main() {
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
       when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.none);
-      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.Derrota);
+      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.derrota);
 
       const jogada2 = '%';
 
@@ -143,7 +142,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Derrota));
+      expect(jogada, equals(StatusJogo.derrota));
     });
   });
 
@@ -157,7 +156,7 @@ void main() {
 
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
-      when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.Empate);
+      when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.empate);
       when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.none);
 
       const jogada2 = '%';
@@ -169,7 +168,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Empate));
+      expect(jogada, equals(StatusJogo.empate));
     });
     test(' and # return a Vitória', () async {
       // Arrange
@@ -179,7 +178,7 @@ void main() {
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
       when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.none);
-      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.Vitoria);
+      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.vitoria);
 
       const jogada2 = '#';
 
@@ -190,7 +189,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Vitoria));
+      expect(jogada, equals(StatusJogo.vitoria));
     });
     test(' and * return a Derrota', () async {
       // Arrange
@@ -200,7 +199,7 @@ void main() {
       final jogo = Jogo(regras: [mockVencer, mockEmpatar]);
 
       when(() => mockEmpatar.aplicar(jogo)).thenReturn(StatusJogo.none);
-      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.Derrota);
+      when(() => mockVencer.aplicar(jogo)).thenReturn(StatusJogo.derrota);
 
       const jogada2 = '*';
 
@@ -211,7 +210,7 @@ void main() {
       );
 
       // Assert
-      expect(jogada, equals(StatusJogo.Derrota));
+      expect(jogada, equals(StatusJogo.derrota));
     });
   });
 }
