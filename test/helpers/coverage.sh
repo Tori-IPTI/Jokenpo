@@ -6,4 +6,4 @@ echo "// ignore_for_file: unused_import" >> $file
 find lib -name '*.dart' | cut -c4- | awk -v package=$1 '{printf "import '\''package:%s%s'\'';\n", package, $1}' >> $file
 echo "void main(){}" >> $file
 
-flutter test --coverage
+flutter test --coverage 

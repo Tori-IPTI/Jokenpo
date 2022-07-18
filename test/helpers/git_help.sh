@@ -1,5 +1,7 @@
 #/bin/bash
 
+set -e
+
 sh test/helpers/coverage.sh jokenpo
 
 git add .
