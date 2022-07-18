@@ -1,5 +1,5 @@
 #/bin/bash
 
-git add $1
-git commit -m "$2"
+git add .
+git commit -m "$1"
 git push
