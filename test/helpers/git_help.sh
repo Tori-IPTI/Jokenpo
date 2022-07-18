@@ -1,6 +1,6 @@
 #/bin/bash
 
-sh coverage.sh
+sh /test/helpers/coverage.sh
 
 git add .
 git commit -m "$1"
