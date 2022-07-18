@@ -1,6 +1,6 @@
 #/bin/bash
 
-fcov jokenpo
+sh test/helpers/coverage.sh jokenpo
 
 git add .
 git commit -m "$1"
