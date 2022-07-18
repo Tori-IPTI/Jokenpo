@@ -18,5 +18,4 @@ import 'package:jokenpo/pages/iniciar_jogo.dart';
 import 'package:jokenpo/pages/menu_page.dart';
 import 'package:jokenpo/pages/placar_page.dart';
 import 'package:jokenpo/pages/regras_page.dart';
-
-void main() {}
+void main(){}
