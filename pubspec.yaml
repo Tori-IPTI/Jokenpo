@@ -12,8 +12,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   provider: ^6.0.3
-  mocktail: ^0.3.0
-  mockingjay: ^0.3.0
+  mocktail: 0.2.0
+  mockingjay: 0.2.0
 
 dev_dependencies:
   flutter_test:

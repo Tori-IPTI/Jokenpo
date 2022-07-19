@@ -26,33 +26,43 @@ class _EscolhaPageState extends State<EscolhaPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              "Jokenpo",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
+            const Flexible(
+              child: Text(
+                "Jokenpo",
+                key: Key("TITLE_PAGE"),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 30),
-              child: const JokenpoOption(
-                asset: 'assets/pedra.png',
-                symbol: "*",
+            Flexible(
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 30),
+                child: const JokenpoOption(
+                  key: Key("OPTION_PEDRA"),
+                  asset: 'assets/pedra.png',
+                  symbol: "*",
+                ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 30),
-              child: const JokenpoOption(
-                asset: 'assets/papel.png',
-                symbol: "#",
+            Flexible(
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 30),
+                child: const JokenpoOption(
+                  asset: 'assets/papel.png',
+                  symbol: "#",
+                ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 30),
-              child: const JokenpoOption(
-                asset: 'assets/tesoura.png',
-                symbol: "%",
+            Flexible(
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 30),
+                child: const JokenpoOption(
+                  asset: 'assets/tesoura.png',
+                  symbol: "%",
+                ),
               ),
             ),
           ],
@@ -76,10 +86,11 @@ class JokenpoOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
+        Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               settings: RouteSettings(
+                name: "/disputa",
                 arguments:
                     DisputaArguments(assetPlayer: asset, symbolPlayer: symbol),
               ),

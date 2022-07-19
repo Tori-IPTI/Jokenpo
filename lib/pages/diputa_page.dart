@@ -1,15 +1,28 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/core/status_jogo.dart';
-import 'package:provider/provider.dart';
 
 class DisputaArguments {
   final String assetPlayer;
   final String symbolPlayer;
 
   DisputaArguments({required this.assetPlayer, required this.symbolPlayer});
+
+  @override
+  bool operator ==(covariant DisputaArguments other) {
+    if (identical(this, other)) return true;
+
+    return other.assetPlayer == assetPlayer &&
+        other.symbolPlayer == symbolPlayer;
+  }
+
+  @override
+  int get hashCode => assetPlayer.hashCode ^ symbolPlayer.hashCode;
 }
 
 class DisputaPage extends StatefulWidget {
