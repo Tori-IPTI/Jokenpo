@@ -1,9 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/core/status_jogo.dart';
 
@@ -88,6 +86,7 @@ class _DisputaPageState extends State<DisputaPage> {
             children: <Widget>[
               const Text(
                 "Fight",
+                key: Key("TITLE_PAGE"),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
               ),
@@ -143,7 +142,7 @@ class _DisputaPageState extends State<DisputaPage> {
                     //Navigator.pushNamed(context, '/escolha');
                     Navigator.pushReplacementNamed(context, '/escolha');
                   },
-                  child: const Text("Fight!"))
+                  child: const Text("Voltar"))
             ],
           ),
         ),

@@ -19,9 +19,9 @@ class AppWidget extends StatelessWidget {
       create: (_) => Jogo(regras: [Vencer(), Empatar()]),
       child: MaterialApp(
         title: 'Flutter Demo',
-        showPerformanceOverlay: true,
-        debugShowCheckedModeBanner: true,
-        checkerboardOffscreenLayers: true,
+        //showPerformanceOverlay: true,
+        //debugShowCheckedModeBanner: true,
+        //checkerboardOffscreenLayers: true,
         //debugShowMaterialGrid: true,
         theme: ThemeData(
           useMaterial3: true,

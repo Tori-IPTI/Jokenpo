@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jokenpo/pages/diputa_page.dart';
-
 import '../core/jogo.dart';
 
 class EscolhaPage extends StatefulWidget {
@@ -51,6 +50,7 @@ class _EscolhaPageState extends State<EscolhaPage> {
               child: Container(
                 margin: const EdgeInsets.symmetric(vertical: 30),
                 child: const JokenpoOption(
+                  key: Key("OPTION_PAPEL"),
                   asset: 'assets/papel.png',
                   symbol: "#",
                 ),
@@ -60,6 +60,7 @@ class _EscolhaPageState extends State<EscolhaPage> {
               child: Container(
                 margin: const EdgeInsets.symmetric(vertical: 30),
                 child: const JokenpoOption(
+                  key: Key("OPTION_TESOURA"),
                   asset: 'assets/tesoura.png',
                   symbol: "%",
                 ),

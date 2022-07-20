@@ -7,3 +7,4 @@ find lib -name '*.dart' | cut -c4- | awk -v package=$1 '{printf "import '\''pack
 echo "void main(){}" >> $file
 
 flutter test --coverage 
+## rodar o coverage
