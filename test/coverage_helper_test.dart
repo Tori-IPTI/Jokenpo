@@ -14,9 +14,7 @@ import 'package:jokenpo/core/status_jogo.dart';
 import 'package:jokenpo/main.dart';
 import 'package:jokenpo/pages/diputa_page.dart';
 import 'package:jokenpo/pages/escolha_page.dart';
-import 'package:jokenpo/pages/iniciar_jogo.dart';
 import 'package:jokenpo/pages/menu_page.dart';
 import 'package:jokenpo/pages/placar_page.dart';
 import 'package:jokenpo/pages/regras_page.dart';
-
-void main() {}
+void main(){}

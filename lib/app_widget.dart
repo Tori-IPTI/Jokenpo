@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jokenpo/core/jogo.dart';
+import 'package:jokenpo/core/severino.dart';
 import 'package:jokenpo/pages/diputa_page.dart';
 import 'package:jokenpo/pages/escolha_page.dart';
 import 'package:jokenpo/pages/menu_page.dart';
@@ -15,8 +16,17 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (_) => Jogo(regras: [Vencer(), Empatar()]),
+    final jogo = Jogo(regras: [Vencer(), Empatar()]);
+
+    return MultiProvider(
+      providers: [
+        Provider(
+          create: (context) => jogo,
+        ),
+        Provider(
+          create: (context) => Severino()
+        ),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         //showPerformanceOverlay: true,
