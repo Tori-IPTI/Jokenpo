@@ -20,6 +20,12 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
-        }
+        },
+        {
+            "name": "Integration Test: Run Test",
+            "program": "./integration_test/foo_test.dart",
+            "request": "launch",
+            "type": "dart"
+        },
     ]
 }

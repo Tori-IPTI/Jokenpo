@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jokenpo/core/jogo.dart';
+import 'package:jokenpo/pages/diputa_page.dart';
+import 'package:jokenpo/pages/escolha_page.dart';
 import 'package:jokenpo/pages/placar_page.dart';
+import 'package:jokenpo/pages/regras_page.dart';
+import 'package:mockingjay/mockingjay.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
 
 class MockJogo extends Mock implements Jogo {}
+
 
 void main() {
   testWidgets("When RegrasPage builds then show elements",
@@ -92,4 +97,35 @@ void main() {
       findsOneWidget,
     );
   });
+
+  testWidgets('Placar Button was taped then navigate to PlacarPage',
+        (WidgetTester tester) async {
+
+        final navigatorMock = MockNavigator();
+        when(() => navigatorMock.pushReplacementNamed(any())).thenAnswer((_) async {
+          return null;
+        });
+        final page = MaterialApp(
+       home: MockNavigatorProvider(
+        navigator: navigatorMock,
+        child: const EscolhaPage(title: '',),
+      ),
+    );
+      // Arrange
+
+      // Act
+      await tester.pumpWidget(page);
+
+      // Assert
+      final resultSearch = find.widgetWithText(ElevatedButton, "Placar");
+
+      expect(resultSearch, findsOneWidget);
+
+      await tester.tap(resultSearch);
+
+      verify(
+        () => navigatorMock.pushReplacementNamed('/placar'),
+      ).called(1);
+    });
+
 }

@@ -34,6 +34,7 @@ class DisputaPage extends StatefulWidget {
 }
 
 class _DisputaPageState extends State<DisputaPage> {
+  late DisputaArguments? args;
   late String assetSeverino;
   late String symbolSeverino;
 
@@ -59,6 +60,7 @@ class _DisputaPageState extends State<DisputaPage> {
   @override
   void didChangeDependencies() {
     jogo = context.watch<Jogo>();
+    args = ModalRoute.of(context)?.settings.arguments as DisputaArguments?;
     final severino = context.watch<Severino>();
 
     final jogada = severino.jogar();
@@ -73,8 +75,6 @@ class _DisputaPageState extends State<DisputaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Disputa"),
@@ -100,7 +100,7 @@ class _DisputaPageState extends State<DisputaPage> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Image.asset(
-                      args.assetPlayer,
+                      args!.assetPlayer,
                       width: 150,
                       height: 120,
                     ),
@@ -125,7 +125,7 @@ class _DisputaPageState extends State<DisputaPage> {
                   key: const Key("iniciar"),
                   onPressed: () {
                     final result = jogo.iniciar(
-                      args.symbolPlayer,
+                      args!.symbolPlayer,
                       symbolSeverino,
                     );
 

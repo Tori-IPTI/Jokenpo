@@ -12,7 +12,8 @@ import 'core/rules/empatar.dart';
 import 'core/rules/vencer.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({Key? key}) : super(key: key);
+  const AppWidget({Key? key, this.rotaInicial = "/"}) : super(key: key);
+  final String rotaInicial;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class AppWidget extends StatelessWidget {
           create: (context) => jogo,
         ),
         Provider(
-          create: (context) => Severino()
+          create: (context) => Severino(),
         ),
       ],
       child: MaterialApp(
@@ -40,7 +41,7 @@ class AppWidget extends StatelessWidget {
             brightness: Brightness.dark,
           ),
         ),
-        initialRoute: '/',
+        initialRoute: rotaInicial,
         routes: {
           '/': (context) => const MenuPage(),
           '/placar': (context) => const PlacarPage(),
