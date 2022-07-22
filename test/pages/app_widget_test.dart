@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jokenpo/app_widget.dart';
 import 'package:jokenpo/pages/escolha_page.dart';
-import 'package:jokenpo/pages/menu_page.dart';
 import 'package:jokenpo/pages/placar_page.dart';
 import 'package:jokenpo/pages/regras_page.dart';
 import 'package:mockingjay/mockingjay.dart';
