@@ -23,7 +23,7 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(find.byType(ElevatedButton), findsNWidgets(3));
+    expect(find.byType(ElevatedButton), findsNWidgets(2));
   });
 
   group("When ", () {
@@ -53,25 +53,6 @@ void main() {
 
       verify(
         () => navigatorMock.pushReplacementNamed('/placar'),
-      ).called(1);
-    });
-
-    testWidgets("Regras Button was taped then navigate to RegrasPage",
-        (WidgetTester tester) async {
-      //arrange
-
-      // Act
-      await tester.pumpWidget(page);
-
-      //Assert
-      final resultSearch = find.widgetWithText(ElevatedButton, "Regras");
-
-      expect(resultSearch, findsOneWidget);
-
-      await tester.tap(resultSearch);
-
-      verify(
-        () => navigatorMock.pushReplacementNamed('/regras'),
       ).called(1);
     });
 
