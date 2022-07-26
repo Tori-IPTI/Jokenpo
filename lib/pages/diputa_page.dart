@@ -131,6 +131,7 @@ class _DisputaPageState extends State<DisputaPage> {
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
+                        key: const Key("disputa_mensagem"),
                         content: Text(messages[result]!),
                       ),
                     );

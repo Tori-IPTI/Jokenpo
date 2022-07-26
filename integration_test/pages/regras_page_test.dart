@@ -1,61 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:jokenpo/app_widget.dart';
+
+import '../robots/escolha_robot.dart';
+import '../robots/placar_robot.dart';
+import '../robots/regras_robot.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets("failing test example", (WidgetTester tester) async {
-    // Arrange
-    runApp(const AppWidget(
-      rotaInicial: '/regras',
-    ));
-    await tester.pumpAndSettle();
-    // Act
+  group("Placar integration test", () {
+    late RegrasRobot regrasRobot;
+    late PlacarRobot placarRobot;
+    late EscolhaRobot escolhaRobot;
 
-    // Assert
-    final resultSearch = find.widgetWithText(ElevatedButton, "Placar");
+    setUpAll(() {
+      placarRobot = PlacarRobot();
+      escolhaRobot = EscolhaRobot();
+      regrasRobot = RegrasRobot();
+    });
 
-    expect(resultSearch, findsOneWidget);
+    testWidgets("when tap PLACAR", (WidgetTester tester) async {
+      // Arrange
 
-    await tester.tap(resultSearch);
+      // Act
+      await regrasRobot.abraPaginaRegras(tester);
+      await regrasRobot.escolhaPlacar(tester);
+      // Assert
+      await placarRobot.verificaCarregamentoDePlacar(tester);
+    });
+    testWidgets("failing test example", (WidgetTester tester) async {
+      // Arrange
 
-    await tester.pumpAndSettle();
-
-    await tester.pump(const Duration(seconds: 5));
-
-    final result = find.textContaining("vitórias");
-
-    expect(result, findsOneWidget);
-  });
-  testWidgets("failing test example", (WidgetTester tester) async {
-    // Arrange
-    runApp(const AppWidget(
-      rotaInicial: '/regras',
-    ));
-    await tester.pumpAndSettle();
-    // Act
-
-    final resultSearch = find.widgetWithText(ElevatedButton, "Jogar");
-
-    expect(resultSearch, findsOneWidget);
-
-    await tester.tap(resultSearch);
-
-    await tester.pumpAndSettle();
-
-    await tester.pump(const Duration(seconds: 5));
-
-    final option = find.byKey(const Key("OPTION_PEDRA"));
-    await tester.tap(option);
-
-    await tester.pumpAndSettle();
-    await tester.pump(const Duration(seconds: 5));
-
-    final result = find.textContaining("Fight");
-
-    // Assert
-    expect(result, findsOneWidget);
+      // Act
+      await regrasRobot.abraPaginaRegras(tester);
+      await regrasRobot.escolhaJogar(tester);
+      // Assert
+      await escolhaRobot.verificaCarregamentoDeEscolha(tester);
+    });
   });
 }

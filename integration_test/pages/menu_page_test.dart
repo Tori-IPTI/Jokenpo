@@ -1,108 +1,54 @@
-import 'package:flutter/material.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:jokenpo/app_widget.dart';
+
+import '../robots/menu_robot.dart';
+import '../robots/escolha_robot.dart';
+import '../robots/regras_robot.dart';
+import '../robots/placar_robot.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  group("Menu integration test", () {
+    late MenuRobot menuRobot;
+    late EscolhaRobot escolhaRobot;
+    late RegrasRobot regrasRobot;
+    late PlacarRobot placarRobot;
 
-  testWidgets("failing test example", (WidgetTester tester) async {
-    // Arrange
-    runApp(const AppWidget(
-      rotaInicial: '/',
-    ));
-    await tester.pumpAndSettle();
-    // Act
+    setUpAll(() {
+      menuRobot = MenuRobot();
+      escolhaRobot = EscolhaRobot();
+      regrasRobot = RegrasRobot();
+      placarRobot = PlacarRobot();
+    });
 
-    // Assert
-    final resultSearch = find.widgetWithText(ElevatedButton, "Jogar");
+    testWidgets("when tap jOGAR", (WidgetTester tester) async {
+      // Arrange
 
-    expect(resultSearch, findsOneWidget);
+      // Act
+      await menuRobot.abraPaginaMenu(tester);
+      await menuRobot.escolhaJogar(tester);
 
-    await tester.tap(resultSearch);
+      // Assert
+      await escolhaRobot.verificaCarregamentoDeEscolha(tester);
+    });
+    testWidgets("when tap REGRAS", (WidgetTester tester) async {
+      // Arrange
+      // Act
+      await menuRobot.abraPaginaMenu(tester);
+      await menuRobot.escolhaRegras(tester);
 
-    await tester.pumpAndSettle();
+      // Assert
+      await regrasRobot.verificaCarregamentoDeRegras(tester);
+    });
+    testWidgets("when tap PLACAR", (WidgetTester tester) async {
+      // Arrange
+      // Act
+      await menuRobot.abraPaginaMenu(tester);
+      await menuRobot.escolhaPlacar(tester);
 
-    await tester.pump(const Duration(seconds: 5));
-
-    final option = find.byKey(const Key("OPTION_PEDRA"));
-    await tester.tap(option);
-
-    await tester.pumpAndSettle();
-    await tester.pump(const Duration(seconds: 5));
-
-    final result = find.textContaining("Fight");
-    expect(result, findsOneWidget);
-  });
-  testWidgets("failing test example", (WidgetTester tester) async {
-    // Arrange
-    runApp(const AppWidget(
-      rotaInicial: '/',
-    ));
-    await tester.pumpAndSettle();
-    // Act
-    // await tester.pumpWidget(page);
-
-    // Assert
-    final resultSearch = find.widgetWithText(ElevatedButton, "Regras");
-
-    expect(resultSearch, findsOneWidget);
-
-    await tester.tap(resultSearch);
-
-    await tester.pumpAndSettle();
-
-    await tester.pump(const Duration(seconds: 5));
-
-    final result = find.textContaining("Regras");
-
-    expect(result, findsOneWidget);
-  });
-  testWidgets("failing test example", (WidgetTester tester) async {
-    // Arrange
-    runApp(const AppWidget(
-      rotaInicial: '/',
-    ));
-    await tester.pumpAndSettle();
-    // Act
-    // await tester.pumpWidget(page);
-
-    // Assert
-    final resultSearch = find.widgetWithText(ElevatedButton, "Regras");
-
-    expect(resultSearch, findsOneWidget);
-
-    await tester.tap(resultSearch);
-
-    await tester.pumpAndSettle();
-
-    await tester.pump(const Duration(seconds: 5));
-
-    final result = find.textContaining("Regras");
-
-    expect(result, findsOneWidget);
-  });
-  testWidgets("failing test example", (WidgetTester tester) async {
-    // Arrange
-    runApp(const AppWidget(
-      rotaInicial: '/',
-    ));
-    await tester.pumpAndSettle();
-    // Act
-
-    // Assert
-    final resultSearch = find.widgetWithText(ElevatedButton, "Placar");
-
-    expect(resultSearch, findsOneWidget);
-
-    await tester.tap(resultSearch);
-
-    await tester.pumpAndSettle();
-
-    await tester.pump(const Duration(seconds: 5));
-
-    final result = find.textContaining("vitórias");
-
-    expect(result, findsOneWidget);
+      // Assert
+      await placarRobot.verificaCarregamentoDePlacar(tester);
+    });
   });
 }

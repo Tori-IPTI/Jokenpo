@@ -1,36 +1,29 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:jokenpo/app_widget.dart';
+
+import '../robots/disputa_robot.dart';
+import '../robots/escolha_robot.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets("failing test example", (WidgetTester tester) async {
-    // Arrange
-    runApp(const AppWidget(
-      rotaInicial: "/regras",
-    ));
-    await tester.pumpAndSettle();
-    // Act
-    final resultSearch = find.widgetWithText(ElevatedButton, "Jogar");
+  group("Escolha integration test", () {
+    late EscolhaRobot escolhaRobot;
+    late DisputaRobot disputaRobot;
+    setUpAll(() {
+      escolhaRobot = EscolhaRobot();
+      disputaRobot = DisputaRobot();
+    });
 
-    expect(resultSearch, findsOneWidget);
+    testWidgets("when tap jOGAR", (WidgetTester tester) async {
+      // Arrange
 
-    await tester.tap(resultSearch);
+      // Act
+      await escolhaRobot.abraPaginaEscolha(tester);
+      await escolhaRobot.escolhaPedra(tester);
 
-    await tester.pumpAndSettle();
-
-    await tester.pump(const Duration(seconds: 5));
-
-    final option = find.byKey(const Key("OPTION_PEDRA"));
-    await tester.tap(option);
-
-    await tester.pumpAndSettle();
-    await tester.pump(const Duration(seconds: 5));
-    // Assert
-
-    final result = find.textContaining("Fight");
-    expect(result, findsOneWidget);
+      // Assert
+      await disputaRobot.verificaCarregamentoDeDisputa(tester);
+    });
   });
 }
