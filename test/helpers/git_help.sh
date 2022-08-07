@@ -14,3 +14,4 @@ git push
 
 ## code ~/.bashrc to permant use
 # alias vai="sh test\helpers\git_help.sh"
+# test --coverage

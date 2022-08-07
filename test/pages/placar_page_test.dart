@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/pages/placar_page.dart';
-import 'package:mocktail/mocktail.dart';
+import 'package:mockingjay/mockingjay.dart';
 import 'package:provider/provider.dart';
 
 class MockJogo extends Mock implements Jogo {}

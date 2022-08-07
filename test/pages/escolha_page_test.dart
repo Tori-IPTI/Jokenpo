@@ -60,6 +60,74 @@ void main() {
           ),
         ).called(1);
       });
+      testWidgets("Teste nav", (widgetTester) async {
+        final navigatorMock = MockNavigator();
+        final args = DisputaArguments(
+          assetPlayer: "assets/papel.png",
+          symbolPlayer: "#",
+        );
+
+        when(() => navigatorMock.pushReplacement<void, dynamic>(any()))
+            .thenAnswer((_) async {});
+
+        final page = MaterialApp(
+          home: MockNavigatorProvider(
+            navigator: navigatorMock,
+            child: const EscolhaPage(title: ''),
+          ),
+        );
+
+        await widgetTester.pumpWidget(page);
+
+        final option = find.byKey(const Key("OPTION_PAPEL"));
+        expect(option, findsOneWidget);
+        await widgetTester.tap(option);
+
+        verify(
+          () => navigatorMock.pushReplacement<void, dynamic>(
+            any<Route<void>>(
+              that: isRoute<void>(
+                whereName: equals("/disputa"),
+                whereArguments: equals(args),
+              ),
+            ),
+          ),
+        ).called(1);
+      });
+      testWidgets("Teste nav", (widgetTester) async {
+        final navigatorMock = MockNavigator();
+        final args = DisputaArguments(
+          assetPlayer: "assets/tesoura.png",
+          symbolPlayer: "%",
+        );
+
+        when(() => navigatorMock.pushReplacement<void, dynamic>(any()))
+            .thenAnswer((_) async {});
+
+        final page = MaterialApp(
+          home: MockNavigatorProvider(
+            navigator: navigatorMock,
+            child: const EscolhaPage(title: ''),
+          ),
+        );
+
+        await widgetTester.pumpWidget(page);
+
+        final option = find.byKey(const Key("OPTION_TESOURA"));
+        expect(option, findsOneWidget);
+        await widgetTester.tap(option);
+
+        verify(
+          () => navigatorMock.pushReplacement<void, dynamic>(
+            any<Route<void>>(
+              that: isRoute<void>(
+                whereName: equals("/disputa"),
+                whereArguments: equals(args),
+              ),
+            ),
+          ),
+        ).called(1);
+      });
     },
   );
 }

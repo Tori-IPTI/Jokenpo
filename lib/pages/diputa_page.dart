@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:jokenpo/core/severino.dart';
 import 'package:provider/provider.dart';
-
 import 'package:jokenpo/core/jogo.dart';
 import 'package:jokenpo/core/status_jogo.dart';
 
@@ -35,6 +34,7 @@ class DisputaPage extends StatefulWidget {
 }
 
 class _DisputaPageState extends State<DisputaPage> {
+  late DisputaArguments? args;
   late String assetSeverino;
   late String symbolSeverino;
 
@@ -47,7 +47,7 @@ class _DisputaPageState extends State<DisputaPage> {
   final messages = <StatusJogo, String>{
     StatusJogo.vitoria: "Você venceu!",
     StatusJogo.empate: "Ops! empatou",
-    StatusJogo.derrota: "Vocẽ perdeu, mané",
+    StatusJogo.derrota: "Você perdeu, mané",
   };
 
   late Jogo jogo;
@@ -60,10 +60,10 @@ class _DisputaPageState extends State<DisputaPage> {
   @override
   void didChangeDependencies() {
     jogo = context.watch<Jogo>();
+    args = ModalRoute.of(context)?.settings.arguments as DisputaArguments?;
+    final severino = context.watch<Severino>();
 
-    final severino = Random();
-    final jogadas = ["*", "#", "%"];
-    final jogada = jogadas[severino.nextInt(3)];
+    final jogada = severino.jogar();
 
     setState(() {
       symbolSeverino = jogada;
@@ -75,42 +75,35 @@ class _DisputaPageState extends State<DisputaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments;
-
-    if (args is DisputaArguments) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text("Disputa"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                "Fight",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Disputa"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              "Fight",
+              key: Key("TITLE_PAGE"),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+            ),
+            if (args is! DisputaArguments)
+              const Center(
+                child: CircularProgressIndicator(),
               ),
+            if (args is DisputaArguments)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Image.asset(
-                      args.assetPlayer,
+                      args!.assetPlayer,
                       width: 150,
                       height: 120,
                     ),
-                    /*
-                  child: Transform(
-                    transform: Matrix4.rotationY(pi),
-                    origin: const Offset(150 / 2, 0),
-                    child: Image.asset(
-                      widget.assetPlayer,
-                      width: 150,
-                      height: 120,
-                    ),
-                  ),*/
                   ),
                   Align(
                     alignment: Alignment.centerRight,
@@ -127,31 +120,27 @@ class _DisputaPageState extends State<DisputaPage> {
                   ),
                 ],
               ),
+            if (args is DisputaArguments)
               ElevatedButton(
+                  key: const Key("iniciar"),
                   onPressed: () {
                     final result = jogo.iniciar(
-                      args.symbolPlayer,
+                      args!.symbolPlayer,
                       symbolSeverino,
                     );
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
+                        key: const Key("disputa_mensagem"),
                         content: Text(messages[result]!),
                       ),
                     );
-
-                    //Navigator.pushNamed(context, '/escolha');
                     Navigator.pushReplacementNamed(context, '/escolha');
                   },
-                  child: const Text("Fight!"))
-            ],
-          ),
+                  child: const Text("Voltar"))
+          ],
         ),
-      );
-    }
-
-    return const Center(
-      child: CircularProgressIndicator(),
+      ),
     );
   }
 }

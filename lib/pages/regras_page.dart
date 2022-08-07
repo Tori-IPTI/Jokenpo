@@ -81,28 +81,6 @@ class _RegrasPageState extends State<RegrasPage> {
                       Flexible(
                         fit: FlexFit.tight,
                         child: ElevatedButton(
-                            onPressed: () {
-                              //Navigator.of(context).pushNamed('/regras');
-                              Navigator.pushReplacementNamed(
-                                  context, '/regras');
-                            },
-                            child: const Text("Regras",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                )),
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  const Color.fromARGB(255, 94, 5, 64)),
-                            )),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Flexible(
-                        fit: FlexFit.tight,
-                        child: ElevatedButton(
                           onPressed: () {
                             Navigator.pushReplacementNamed(context, '/placar');
                           },
